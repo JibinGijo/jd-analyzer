@@ -39,20 +39,18 @@ if (st.button("Analyze")):
 
         matched=[]
         missing=[]
-        matched_scores=[]
 
 
         for m in jd_skills:
             if m[0] in resume_skills:
-                matched.append(f"{m[0]} - {round(m[1]*100, 2)}%")
-                matched_scores.append(m[1])
+                matched.append(m[0])
             else:
                 missing.append(m[0])
         
 
         st.write("Resume Score:")
-        if matched_scores:
-            st.write(round((sum(matched_scores)/len(matched_scores))*100,2))
+        if matched:
+            st.write(round(len(matched) / len(jd_skills) * 100, 2))
         else:
             st.write(0)
         
